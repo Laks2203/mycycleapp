@@ -127,6 +127,11 @@ user_name = st.text_input("", key="user_name", placeholder="Enter your name", la
 
 # Display for testing
 # st.write("You entered:", user_name)
+if st.button("Submit"):
+    if user_name:
+        st.success(f"Welcome, {user_name}!")
+    else:
+        st.warning("Please enter your name.")
 
 # --- Period Prediction ---
 st.header("📅 Predict Your Cycle")
@@ -155,6 +160,9 @@ if st.button("Predict Next Cycle"):
         🔄 **Current Phase:** {phase}
         """)
 
+st.header ('Did You Know?')
+st.write('PCOS is a major determinant of cognitive decline in women post menopause and can lead towards further progression in neurodegenerative diseases.')
+st.write('Managing PCOS effectively can help mitigate these risks.')
 # --- Daily Tip ---
 if st.button("Get a Daily Health Tip"):
     st.info("Tip: Drink spearmint tea daily to help manage PCOS symptoms.")
