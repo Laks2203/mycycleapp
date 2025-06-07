@@ -174,3 +174,20 @@ st.markdown("""
 ---
 &copy; 2025 MyCycle App | Made with 💖 for women's health
 """)
+
+# --- Stay Updated Section ---
+st.header("📧 Stay Updated with MyCycle")
+st.write("Enter your email to receive updates, tips, and news about MyCycle.")
+
+user_email = st.text_input("Your Email", key="user_email", placeholder="example@email.com")
+
+if st.button("Subscribe"):
+    if user_email and "@" in user_email and "." in user_email:
+        # Log email to Google Sheet (reuse your log_to_gsheet if available)
+        try:
+            log_to_gsheet({"email": user_email})
+            st.success("Thank you for subscribing! You'll receive updates soon.")
+        except Exception as e:
+            st.error("There was an error saving your email. Please try again later.")
+    else:
+        st.warning("Please enter a valid email address.")
