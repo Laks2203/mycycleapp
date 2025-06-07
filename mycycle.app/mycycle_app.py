@@ -100,6 +100,33 @@ if st.button("Get Diagnostic Suggestion"):
             suggestion = "Your selected mood and symptoms don't show major concerns, but continue regular tracking!"
 
         st.markdown(f"### Health Insight:\n{suggestion}")
+import streamlit as st
+
+# Custom style for rectangular background
+st.markdown("""
+    <style>
+    .name-input {
+        background-color: #f0f2f6;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #d3d3d3;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .input-label {
+        font-weight: 600;
+        font-size: 16px;
+        color: #333;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Label and input field
+st.markdown('<div class="input-label">Your Name</div>', unsafe_allow_html=True)
+user_name = st.text_input("", key="user_name", placeholder="Enter your name", label_visibility="collapsed")
+
+# Display for testing
+# st.write("You entered:", user_name)
 
 # --- Period Prediction ---
 st.header("📅 Predict Your Cycle")
