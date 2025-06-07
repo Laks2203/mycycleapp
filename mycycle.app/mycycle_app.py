@@ -32,7 +32,26 @@ st.markdown("""
 # Label and input field
 st.markdown('<div class="input-label">Your Name</div>', unsafe_allow_html=True)
 user_name = st.text_input("", key="user_name", placeholder="Enter your name", label_visibility="collapsed")
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
+def log_to_gsheet(data_dict):
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    creds = ServiceAccountCredentials.from_json_keyfile_name('/etc/creds.json', scope)
+    client = gspread.authorize(creds)
+    sheet = client.open("MyCycle_Research_Data").sheet1
+
+    # Prepare a row with all possible fields
+    row = [
+        str(datetime.now()),
+        data_dict.get("cycle_start", ""),
+        data_dict.get("cycle_length", ""),
+        data_dict.get("fertile_window", ""),
+        data_dict.get("ovulation_day", ""),
+        data_dict.get("notes", ""),
+        data_dict.get("email", "")
+    ]
+    sheet.append_row(row)
 # Display for testing
 # st.write("You entered:", user_name)
 if st.button("Submit"):
