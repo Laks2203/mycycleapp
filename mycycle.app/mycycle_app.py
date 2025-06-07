@@ -7,10 +7,7 @@ st.set_page_config(page_title="MyCycle - PCOS Tracker", layout="centered")
 st.title("MyCycle")
 st.write("_Your personal PCOS & menstrual health tracker._")
 
-# --- Navigation simulation ---
-st.markdown("""
-[Home](#) | [Tracker](#) | [Tips](#)
-""")
+
 import streamlit as st
 
 # Custom style for rectangular background
